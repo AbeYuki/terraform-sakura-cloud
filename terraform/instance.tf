@@ -1,6 +1,6 @@
 resource "sakuracloud_server" "K8S_NODE" {
   name        = "k8s-node"
-  disks       = [sakuracloud_disk.K8S_NODE.id]
+  disks       = [sakuracloud_disk.DISK.id]
   core        = 1
   memory      = 2
   description = "Microk8s"
@@ -11,11 +11,14 @@ resource "sakuracloud_server" "K8S_NODE" {
   }
 
   disk_edit_parameter {
-    hostname        = "k8s-node"
+    hostname        = "microk8s"
+    password        = var.PASSWORD
     disable_pw_auth = true
+
     ssh_key_ids     = [var.SSH_KEY_IDS]
   }
 }
+
 resource "sakuracloud_disk" "DISK" {
   name              = "k8s-disk"
   source_archive_id = data.sakuracloud_archive.ubuntu.id
