@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "aimhighergg-tfstate"
-    region = "ap-northeast-1"
-    key = "sakura-cloud.tfstate"
+    bucket  = "aimhighergg-tfstate"
+    region  = "ap-northeast-1"
+    key     = "sakura-cloud.tfstate"
     encrypt = true
   }
   required_providers {
